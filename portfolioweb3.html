@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ishan Golatkar — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0D0D0D;
+    --panel: #161616;
+    --panel-line: #2A2A2A;
+    --ink: #F5F5F5;
+    --muted: #A3A3A3;
+    --green: #7CB83F;
+    --green-dark: #5C8E2C;
+    --radius: 14px;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0; background: var(--bg); color: var(--ink);
+    font-family: 'IBM Plex Mono', monospace;
+    line-height: 1.7;
+  }
+  ::selection{ background: var(--green); color: #0D0D0D; }
+  a{ color: inherit; }
+  .wrap{ max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+
+  .display{ font-family: 'Archivo Black', sans-serif; }
+  .heading{ font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+
+  /* ---------- Nav ---------- */
+  .nav-outer{ padding: 28px 28px 0; }
+  nav.pill{
+    max-width: 1140px; margin: 0 auto;
+    background: var(--panel); border: 1px solid var(--panel-line);
+    border-radius: 999px; padding: 16px 36px;
+    display:flex; justify-content:center; gap: 44px; flex-wrap: wrap;
+  }
+  nav.pill a{
+    text-decoration:none; color: var(--ink); font-size: 14px; letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  nav.pill a:hover{ color: var(--green); }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding: 88px 0 100px; }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items:center;
+  }
+  .hero h1{
+    font-size: clamp(38px, 5.2vw, 56px); line-height: 1.05; margin: 0 0 26px;
+    letter-spacing: -0.01em;
+  }
+  .hero p{
+    color: var(--muted); font-size: 15px; max-width: 52ch; margin: 0 0 36px;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap: 10px;
+    background: var(--green); color: #0D0D0D; text-decoration:none;
+    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size: 14px;
+    padding: 17px 30px; border-radius: 999px; border:none; cursor:pointer;
+    box-shadow: 0 0 0 rgba(124,184,63,0); transition: box-shadow 0.25s, transform 0.2s;
+  }
+  .btn:hover{ box-shadow: 0 0 28px rgba(124,184,63,0.45); transform: translateY(-1px); }
+  .btn-ghost{
+    background: transparent; color: var(--ink); border: 1px solid var(--panel-line);
+  }
+  .btn-ghost:hover{ box-shadow:none; border-color: var(--green); color: var(--green); }
+
+  .photo-frame{
+    width: 100%; aspect-ratio: 1/1; border-radius: 50%; overflow:hidden;
+    background: linear-gradient(160deg, #2b2b2b, #0f0f0f);
+    display:flex; align-items:center; justify-content:center;
+    border: 1px solid var(--panel-line);
+  }
+  .photo-frame svg{ width: 58%; opacity: 0.5; }
+
+  /* ---------- Section shell ---------- */
+  section{ padding: 90px 0; border-top: 1px solid var(--panel-line); }
+  .eyebrow{
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green);
+    display:flex; align-items:center; gap: 10px; margin-bottom: 18px;
+  }
+  .eyebrow::before{ content:""; width: 20px; height: 1px; background: var(--green); }
+  h2.section-title{ font-size: clamp(26px, 3.2vw, 32px); margin: 0 0 44px; }
+
+  /* ---------- Projects ---------- */
+  .proj-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+  .proj-card{
+    background: var(--panel); border: 1px solid var(--panel-line); border-radius: var(--radius);
+    padding: 28px;
+  }
+  .proj-card .num{ color: var(--green); font-size: 13px; margin-bottom: 14px; display:block; }
+  .proj-card h3{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size: 19px; margin: 0 0 10px; }
+  .proj-card p{ color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+  .tag-row{ display:flex; gap:8px; flex-wrap:wrap; }
+  .tag{
+    font-size: 10.5px; letter-spacing:0.05em; text-transform:uppercase; color: var(--green);
+    border: 1px solid rgba(124,184,63,0.35); padding: 4px 10px; border-radius: 999px;
+  }
+
+  /* ---------- Adventures (achievements) ---------- */
+  .ach-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding: 20px 0; border-bottom: 1px solid var(--panel-line);
+  }
+  .ach-row:last-child{ border-bottom:none; }
+  .ach-row h4{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size: 17px; margin:0; }
+  .ach-row span{ font-size: 12px; color: var(--muted); }
+
+  /* ---------- Recent work (creative) ---------- */
+  .work-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .work-card{
+    background: var(--panel); border: 1px solid var(--panel-line); border-radius: var(--radius);
+    padding: 26px;
+  }
+  .work-card h4{ font-family:'Space Grotesk',sans-serif; font-size: 16px; margin: 0 0 10px; color: var(--green); }
+  .work-card p{ font-size: 13.5px; color: var(--muted); margin:0; }
+
+  /* ---------- Contact ---------- */
+  .contact-panel{
+    background: var(--panel); border: 1px solid var(--panel-line); border-radius: var(--radius);
+    padding: 56px; text-align:center;
+  }
+  .contact-panel p{ color: var(--muted); margin: 0 0 30px; font-size: 14px; }
+  .contact-links{ display:flex; gap: 16px; justify-content:center; flex-wrap:wrap; }
+
+  footer{ padding: 36px 0 50px; text-align:center; }
+  footer p{ font-size: 11.5px; color: var(--muted); margin:0; }
+
+  @media (max-width: 760px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .hero .photo-frame{ max-width: 240px; margin: 0 auto; }
+    .proj-grid, .work-grid{ grid-template-columns: 1fr; }
+    nav.pill{ gap: 20px; padding: 14px 20px; }
+  }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+
+<div class="nav-outer">
+  <nav class="pill">
+    <a href="#top">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#adventures">Adventures</a>
+    <a href="#work">Recent work</a>
+    <a href="#contact">Get In Touch</a>
+  </nav>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="border-top:none;">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 class="display">ISHAN GOLATKAR</h1>
+        <p>I'm Ishan, an aspiring engineer with a lifelong interest in programming and building. Alongside my academic pursuits, I've competed at the district level in badminton and taken part in dramatics and performing arts experiences that have shaped my discipline and adaptability. I'm currently working toward a career in engineering, with a focus on Computer Science and related fields.</p>
+        <a class="btn" href="#projects">Let's get started &gt;</a>
+      </div>
+      <div class="photo-frame">
+        <img src="1000018487.jpg" alt="Ishan Golatkar" style="width:100%; height:100%; object-fit:cover;">
+          <circle cx="50" cy="38" r="18" fill="#4a4a4a"/>
+          <path d="M14,96 C14,68 30,56 50,56 C70,56 86,68 86,96 Z" fill="#4a4a4a"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="eyebrow">Build Log</div>
+      <h2 class="section-title heading">Projects</h2>
+      <div class="proj-grid">
+        <div class="proj-card">
+          <span class="num">01</span>
+          <h3>Drone</h3>
+          <p>Built with help from my brother, my first real hands-on dive into flight mechanics and control.</p>
+          <div class="tag-row"><span class="tag">Electronics</span><span class="tag">Flight</span></div>
+        </div>
+        <div class="proj-card">
+          <span class="num">02</span>
+          <h3>Waste-Segregating Dustbin</h3>
+          <p>A model built for a school competition, designed to automatically sort waste at the point of disposal.</p>
+          <div class="tag-row"><span class="tag">Automation</span><span class="tag">Sustainability</span></div>
+        </div>
+        <div class="proj-card">
+          <span class="num">03</span>
+          <h3>Oil-Water Separator Boat</h3>
+          <p>A model boat that separates oil from water surfaces, built for a model-making competition.</p>
+          <div class="tag-row"><span class="tag">Fluid Mechanics</span><span class="tag">Environment</span></div>
+        </div>
+        <div class="proj-card">
+          <span class="num">04</span>
+          <h3>Hydraulic Crane</h3>
+          <p>The build that deepened my interest in physics — working through force, pressure, and leverage by hand.</p>
+          <div class="tag-row"><span class="tag">Mechanics</span><span class="tag">Physics</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVENTURES (achievements) -->
+  <section id="adventures">
+    <div class="wrap">
+      <div class="eyebrow">Track Record</div>
+      <h2 class="section-title heading">Adventures</h2>
+      <div class="ach-row"><h4>District-Level Badminton Championship</h4><span>Semi-Finals</span></div>
+      <div class="ach-row"><h4>School Skit Competitions</h4><span>Winner</span></div>
+      <div class="ach-row"><h4>Model-Making Competitions</h4><span>Multiple entries</span></div>
+      <div class="ach-row"><h4>Kalsubai</h4><span>Trek</span></div>
+      <div class="ach-row"><h4>Harishchandragad</h4><span>Trek</span></div>
+      <div class="ach-row"><h4>Harihar</h4><span>Trek</span></div>
+      <div class="ach-row"><h4>Kokankada</h4><span>Trek</span></div>
+    </div>
+  </section>
+
+  <!-- RECENT WORK (creative) -->
+  <section id="work">
+    <div class="wrap">
+      <div class="eyebrow">Creative</div>
+      <h2 class="section-title heading">Recent work</h2>
+      <div class="work-grid">
+        <div class="work-card">
+          <h4>Video Editing</h4>
+          <p>Cinematic edits built around mood and pacing, drawing on visual storytelling techniques from Game of Thrones.</p>
+        </div>
+        <div class="work-card">
+          <h4>Music Curation</h4>
+          <p>Scoring scenes with reference to composers like Ramin Djawadi, Hans Zimmer, and Two Steps From Hell and generating original epic-fantasy tracks with Suno AI.</p>
+        </div>
+        <div class="work-card">
+          <h4>Drama &amp; Skits</h4>
+          <p>Competed in and won school-level skit competitions,a different stage for the same storytelling instinct.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-panel">
+        <div class="eyebrow" style="justify-content:center;">Get in touch</div>
+        <h2 class="section-title heading" style="margin-bottom:10px;">Let's talk.</h2>
+        <p>Open to conversations about engineering, projects, or creative collaborations.</p>
+        <p>--> +91 9075671448  <br> --> ishangolatkar007@gmail.com</p>
+        <div class="contact-links">
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/ishan-golatkar-059251267/">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="wrap">Built by Ishan Golatkar — updated july/2026</p>
+</footer>
+
+</body>
+</html>
