@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drone Project — Ishan Golatkar</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0D0D0D;
+      --panel: #161616;
+      --panel-line: #2A2A2A;
+      --ink: #F5F5F5;
+      --muted: #A3A3A3;
+      --green: #7CB83F;
+      --radius: 14px;
+    }
+
+    *{
+      box-sizing: border-box;
+    }
+
+    html{
+      scroll-behavior: smooth;
+    }
+
+    body{
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "IBM Plex Mono", monospace;
+      line-height: 1.7;
+    }
+
+    ::selection{
+      background: var(--green);
+      color: #0D0D0D;
+    }
+
+    .wrap{
+      width: min(1140px, calc(100% - 56px));
+      margin: 0 auto;
+    }
+
+    .display{
+      font-family: "Archivo Black", sans-serif;
+    }
+
+    .heading{
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+    }
+
+    .topbar{
+      padding: 28px 0;
+      border-bottom: 1px solid var(--panel-line);
+    }
+
+    .back-link{
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover{
+      color: var(--green);
+    }
+
+    .hero{
+      padding: 82px 0 60px;
+    }
+
+    .eyebrow{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: var(--green);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before{
+      content: "";
+      width: 20px;
+      height: 1px;
+      background: var(--green);
+    }
+
+    h1{
+      max-width: 850px;
+      margin: 0 0 24px;
+      font-size: clamp(40px, 7vw, 72px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .intro{
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .drone-image{
+      width: 100%;
+      height: min(500px, 62vw);
+      margin: 52px 0;
+      overflow: hidden;
+      border: 1px solid var(--panel-line);
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #242424, #101010);
+    }
+
+    .drone-image img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-placeholder{
+      display: grid;
+      width: 100%;
+      height: 100%;
+      place-items: center;
+      color: var(--muted);
+      text-align: center;
+      padding: 24px;
+    }
+
+    .details-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding-bottom: 72px;
+    }
+
+    .detail-card{
+      padding: 28px;
+      border: 1px solid var(--panel-line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+
+    .detail-card h2{
+      margin: 0 0 14px;
+      color: var(--green);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+    }
+
+    .detail-card p,
+    .detail-card li{
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .detail-card p{
+      margin: 0;
+    }
+
+    .detail-card ul{
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .tag-row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag{
+      padding: 4px 10px;
+      border: 1px solid rgba(124, 184, 63, 0.35);
+      border-radius: 999px;
+      color: var(--green);
+      font-size: 10.5px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .action-panel{
+      margin-bottom: 72px;
+      padding: 42px;
+      border: 1px solid var(--panel-line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      text-align: center;
+    }
+
+    .action-panel h2{
+      margin: 0 0 12px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 25px;
+    }
+
+    .action-panel p{
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 26px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #0D0D0D;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.25s ease;
+    }
+
+    .btn:hover{
+      box-shadow: 0 0 28px rgba(124, 184, 63, 0.45);
+      transform: translateY(-2px);
+    }
+
+    footer{
+      padding: 30px 0 45px;
+      border-top: 1px solid var(--panel-line);
+      color: var(--muted);
+      font-size: 11.5px;
+      text-align: center;
+    }
+/* ---------- Parts & Links ---------- */
+.parts-section{
+  margin-top: 10px;
+}
+
+.parts-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.part-card{
+  padding: 26px;
+  border: 1px solid var(--panel-line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.part-card h3{
+  margin: 0 0 10px;
+  color: var(--green);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+}
+
+.part-desc{
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.part-list{
+  margin: 0 0 18px;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.part-list li{
+  margin-bottom: 6px;
+}
+
+.part-links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.part-links a{
+  color: var(--green);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.part-links a:hover{
+  color: #9fe05c;
+}
+
+.parts-note{
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 860px){
+  .parts-grid{
+    grid-template-columns: 1fr;
+  }
+}
+    @media (max-width: 720px){
+      .wrap{
+        width: min(100% - 40px, 1140px);
+      }
+
+      .hero{
+        padding: 58px 0 42px;
+      }
+
+      .details-grid{
+        grid-template-columns: 1fr;
+      }
+
+      .action-panel{
+        padding: 30px 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="back-link" href="index.html">← Back to portfolio</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Project 01 · Build Log</div>
+
+        <h1 class="display">DRONE</h1>
+
+        <p class="intro">
+         This was my first major hands-on engineering project, built with my brother's help. It introduced me to the practical challenges of making something fly: electronics, balance, component integration, and flight control.
+        </p>
+
+        <div class="drone-image">
+          <img src="DronePic1.jpeg" alt="Drone project built by Ishan Golatkar" width="100">
+        </div>
+
+ <div class="details-grid">
+  <article class="detail-card">
+    <h2>About the build</h2>
+    <p>
+      My first major engineering endeavor, developed with my brother, provided deep hands-on experience navigating the real-world challenges of aerodynamics, electronics, component integration, and system control
+    </p>
+  </article>
+
+  <article class="detail-card">
+    <h2>What I learned</h2>
+    <ul>
+      <li>Basic flight mechanics and stability</li>
+      <li>How motors, propellers, and power systems work together</li>
+      <li>The importance of balance and weight distribution</li>
+      <li>Practical troubleshooting during hardware assembly</li>
+    </ul>
+  </article>
+
+  <article class="detail-card">
+    <h2>Project areas</h2>
+    <div class="tag-row">
+      <span class="tag">Electronics</span>
+      <span class="tag">Flight</span>
+      <span class="tag">Mechanics</span>
+      <span class="tag">Problem Solving</span>
+    </div>
+  </article>
+</div>
+
+<!-- Parts & Links -->
+<div class="parts-section" style="margin-bottom:72px;">
+  <div class="eyebrow">Bill of Materials</div>
+  <h2 class="section-title heading" style="margin:0 0 22px;">Parts &amp; links</h2>
+
+  <div class="parts-grid">
+    <article class="part-card">
+      <h3>Frame</h3>
+      <p class="part-desc">
+        Main chassis that holds all components together and sets motor spacing and overall weight.
+      </p>
+      <ul class="part-list">
+        <li>Model: F450 quadcopter kit</li>
+        <li>Wheelbase: 450 mm</li>
+      </ul>
+      <div class="part-links">
+        <a href="https://www.amazon.in/Robodo-Electronics-Quadcopter-Integrated-Version/dp/B00MYC7NDE/ref=sr_1_2?crid=1XYM9X7AWI969&dib=eyJ2IjoiMSJ9.ftxwku3ZZiEw4bbvJPM9MJE47ScTc8f0ALuA94KfTeRUkKt7YHvbXZDrhnyAZo46lfFP985eBap-cR4jw6C4lYXTsXP_Cpy7juaHy3cRLfRUEHMsYP-voPkSJE8MOfjtUDrqCjDCPH86TuJ8frCQw_8mHGmFKu6souD6fT3ow_2WlzOr6jCf81jNTeDjodPaJs-9W88Q_21h6kySJB_NFtvZ1H4xt8Bzo0SUgzSKPV0YGSbTKVyLHOfICTedBMcmESeKJTtvN1jbXcnNggRT5sP0FpiBsc0rgsNZeB3RRA8.nqcUJki4hebZ2mUBaEeFCQfpHLEH390BTCZkfl2EDUQ&dib_tag=se&keywords=f+450+drone+frame&qid=1790789632&sprefix=F+450+%2Caps%2C243&sr=8-2" target="_blank" rel="noopener noreferrer">Frame product page →</a>
+      </div>
+    </article>
+
+    <article class="part-card">
+      <h3>Motors</h3>
+      <p class="part-desc">
+        Brushless motors that spin the propellers and produce thrust.
+      </p>
+      <ul class="part-list">
+        <li>Model: Ready to Sky RS2212</li>
+        <li>KV: 920 KV</li>
+        <li>Type: Brushless outrunner</li>
+        <li>Count: 4</li>
+      </ul>
+      <div class="part-links">
+        <a href="https://www.amazon.in/Readytosky-920KV-Brushless-Phantom-Quadcopter/dp/B075DD16LK" target="_blank" rel="noopener noreferrer">CW & CCW Motor product page →</a>
+      </div>
+    </article>
+
+    <article class="part-card">
+      <h3>Electronic Speed Controllers (ESCs)</h3>
+      <p class="part-desc">
+        Control motor speed based on signals from the flight controller.
+      </p>
+      <ul class="part-list">
+        <li>Rating: 30 A each</li>
+        <li>Firmware: SimonK</li>
+        <li>Count: 4 (with connectors)</li>
+      </ul>
+      <div class="part-links">
+        <a href="https://www.amazon.in/Robocraze-SimonK-Electronic-Controller-Connectors/dp/B0DP6FYJSK/ref=pd_rhf_se_s_pd_sbs_rvi_d_sccl_1_4/525-0039109-1415641?pd_rd_w=Vuaxe&content-id=amzn1.sym.ed04a9b6-f1e8-467f-8e81-e050db1b5151&pf_rd_p=ed04a9b6-f1e8-467f-8e81-e050db1b5151&pf_rd_r=JTJZRRSS85X3H0BW9VR9&pd_rd_wg=lpK9r&pd_rd_r=eaba49ba-5fc0-4120-93d1-457121d24e1b&pd_rd_i=B0DP6FYJSK&psc=1" target="_blank" rel="noopener noreferrer">ESC product page →</a>
+      </div>
+    </article>
+
+    <article class="part-card">
+      <h3>Flight Controller</h3>
+      <p class="part-desc">
+        The brain of the drone. It reads sensor data and pilot inputs and keeps the drone stable.
+      </p>
+      <ul class="part-list">
+        <li>Board: ArduPilot APM 2.8</li>
+        <li>Firmware: ArduPilot (ArduCopter)</li>
+        <li>Onboard gyro/accelerometer and barometer</li>
+      </ul>
+      <div class="part-links">
+        <a href="https://www.amazon.in/ArduPilot-Flight-Controller-Telemetry-Drones/dp/B0GVTZYZ8D" target="_blank" rel="noopener noreferrer">Flight controller page →</a>
+      </div>
+    </article>
+
+    <article class="part-card">
+      <h3>Battery</h3>
+      <p class="part-desc">
+        LiPo battery that powers the entire system. Cell count and capacity set the voltage and flight time.
+      </p>
+      <ul class="part-list">
+        <li>Brand: Orange</li>
+        <li>Cells: 3S (7.4 V nominal)</li>
+      </ul>
+      <div class="part-links">
+        <a href="https://www.google.com/search?ibp=oshop&prds=pvt:hg,pvo:48,imageDocid:13243820354422718388,headlineOfferDocid:14326584008345958160,productDocid:14326584008345958160&q=product&sa=X&ved=2ahUKEwjciee-7JaXAxUyluEIHd0AA3MQgLcPegoIAggACAAIJxAn&biw=1920&bih=953&dpr=1" target="_blank" rel="noopener noreferrer">Battery product page →</a>
+      </div>
+    </article>
+
+    <article class="part-card">
+      <h3>Radio system (TX &amp; RX)</h3>
+      <p class="part-desc">
+        Handheld transmitter and onboard receiver for pilot control.
+      </p>
+      <ul class="part-list">
+        <li>Type: FlySky 6-channel, 2.4 GHz</li>
+        <li>Receiver: FS-R6B</li>
+        <li>Channels: 6</li>
+      </ul>
+      <div class="part-links">
+        <a href="https://www.amazon.in/RoboCraze-Transmitter-Quadcopter-Helicopter-Controller/dp/B08HZD5YRB/ref=pd_sbs_d_sccl_2_3/525-0039109-1415641?pd_rd_w=ElHfF&content-id=amzn1.sym.d1406b44-aa69-47e4-9270-f613e12d52dc&pf_rd_p=d1406b44-aa69-47e4-9270-f613e12d52dc&pf_rd_r=3XY41ANJJHQVGBH2DKY2&pd_rd_wg=Rs2ZL&pd_rd_r=7c8b8e64-d8be-4199-82b6-b780242c9ea6&pd_rd_i=B08HZD5YRB&psc=1" target="_blank" rel="noopener noreferrer">Transmitter &amp; receiver page →</a>
+      </div>
+    </article>
+  </div>
+</div>
+        <div class="action-panel">
+          <h2 class="heading">Back to the full portfolio</h2>
+          <p>
+            Explore my other engineering models, creative work, achievements,
+            and interests.
+          </p>
+          <a class="btn" href="index.html">Return to portfolio →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Built by Ishan Golatkar — updated July 2026</div>
+  </footer>
+</body>
+</html>
