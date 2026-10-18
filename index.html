@@ -1,304 +1,423 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ishan Golatkar — Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg: #0D0D0D;
-    --panel: #161616;
-    --panel-line: #2A2A2A;
-    --ink: #F5F5F5;
-    --muted: #A3A3A3;
-    --green: #7CB83F;
-    --green-dark: #5C8E2C;
-    --radius: 14px;
-  }
-  *{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; }
-  body{
-    margin:0; background: var(--bg); color: var(--ink);
-    font-family: 'IBM Plex Mono', monospace;
-    line-height: 1.7;
-  }
-  ::selection{ background: var(--green); color: #0D0D0D; }
-  a{ color: inherit; }
-  .wrap{ max-width: 1140px; margin: 0 auto; padding: 0 28px; }
-
-  .display{ font-family: 'Archivo Black', sans-serif; }
-  .heading{ font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
-
-  /* ---------- Nav ---------- */
-  .nav-outer{ padding: 28px 28px 0; }
-  nav.pill{
-    max-width: 1140px; margin: 0 auto;
-    background: var(--panel); border: 1px solid var(--panel-line);
-    border-radius: 999px; padding: 16px 36px;
-    display:flex; justify-content:center; gap: 44px; flex-wrap: wrap;
-  }
-  nav.pill a{
-    text-decoration:none; color: var(--ink); font-size: 14px; letter-spacing: 0.02em;
-    transition: color 0.2s;
-  }
-  nav.pill a:hover{ color: var(--green); }
-
-  /* ---------- Hero ---------- */
-  .hero{ padding: 88px 0 100px; }
-  .hero-grid{
-    display:grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items:center;
-  }
-  .hero h1{
-    font-size: clamp(38px, 5.2vw, 56px); line-height: 1.05; margin: 0 0 26px;
-    letter-spacing: -0.01em;
-  }
-  .hero p{
-    color: var(--muted); font-size: 15px; max-width: 52ch; margin: 0 0 36px;
-  }
-  .btn{
-    display:inline-flex; align-items:center; gap: 10px;
-    background: var(--green); color: #0D0D0D; text-decoration:none;
-    font-family:'IBM Plex Mono', monospace; font-weight:500; font-size: 14px;
-    padding: 17px 30px; border-radius: 999px; border:none; cursor:pointer;
-    box-shadow: 0 0 0 rgba(124,184,63,0); transition: box-shadow 0.25s, transform 0.2s;
-  }
-  .btn:hover{ box-shadow: 0 0 28px rgba(124,184,63,0.45); transform: translateY(-1px); }
-  .btn-ghost{
-    background: transparent; color: var(--ink); border: 1px solid var(--panel-line);
-  }
-  .btn-ghost:hover{ box-shadow:none; border-color: var(--green); color: var(--green); }
-
-  .photo-frame{
-    width: 100%; aspect-ratio: 1/1; border-radius: 50%; overflow:hidden;
-    background: linear-gradient(160deg, #2b2b2b, #0f0f0f);
-    display:flex; align-items:center; justify-content:center;
-    border: 1px solid var(--panel-line);
-  }
-  .photo-frame svg{ width: 58%; opacity: 0.5; }
-
-  /* ---------- Section shell ---------- */
-  .proj-link{
-  display: block;
-  color: inherit;
-  text-decoration: none;
-  border-radius: var(--radius);
-}
-
-.proj-link:focus-visible{
-  outline: 2px solid var(--green);
-  outline-offset: 4px;
-}
-
-.proj-link .proj-card{
-  height: 100%;
-  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-}
-
-.proj-link:hover .proj-card{
-  transform: translateY(-5px);
-  border-color: var(--green);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
-}
-
-.project-arrow{
-  display: inline-block;
-  margin-top: 18px;
-  color: var(--green);
-  font-size: 13px;
-}
-  section{ padding: 90px 0; border-top: 1px solid var(--panel-line); }
-  .eyebrow{
-    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green);
-    display:flex; align-items:center; gap: 10px; margin-bottom: 18px;
-  }
-  .eyebrow::before{ content:""; width: 20px; height: 1px; background: var(--green); }
-  h2.section-title{ font-size: clamp(26px, 3.2vw, 32px); margin: 0 0 44px; }
-
-  /* ---------- Projects ---------- */
-  .proj-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
-  .proj-card{
-    background: var(--panel); border: 1px solid var(--panel-line); border-radius: var(--radius);
-    padding: 28px;
-  }
-  .proj-card .num{ color: var(--green); font-size: 13px; margin-bottom: 14px; display:block; }
-  .proj-card h3{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size: 19px; margin: 0 0 10px; }
-  .proj-card p{ color: var(--muted); font-size: 14px; margin: 0 0 14px; }
-  .tag-row{ display:flex; gap:8px; flex-wrap:wrap; }
-  .tag{
-    font-size: 10.5px; letter-spacing:0.05em; text-transform:uppercase; color: var(--green);
-    border: 1px solid rgba(124,184,63,0.35); padding: 4px 10px; border-radius: 999px;
-  }
-
-  /* ---------- Adventures (achievements) ---------- */
-  .ach-row{
-    display:flex; justify-content:space-between; align-items:baseline;
-    padding: 20px 0; border-bottom: 1px solid var(--panel-line);
-  }
-  .ach-row:last-child{ border-bottom:none; }
-  .ach-row h4{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size: 17px; margin:0; }
-  .ach-row span{ font-size: 12px; color: var(--muted); }
-
-  /* ---------- Recent work (creative) ---------- */
-  .work-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-  .work-card{
-    background: var(--panel); border: 1px solid var(--panel-line); border-radius: var(--radius);
-    padding: 26px;
-  }
-  .work-card h4{ font-family:'Space Grotesk',sans-serif; font-size: 16px; margin: 0 0 10px; color: var(--green); }
-  .work-card p{ font-size: 13.5px; color: var(--muted); margin:0; }
-
-  /* ---------- Contact ---------- */
-  .contact-panel{
-    background: var(--panel); border: 1px solid var(--panel-line); border-radius: var(--radius);
-    padding: 56px; text-align:center;
-  }
-  .contact-panel p{ color: var(--muted); margin: 0 0 30px; font-size: 14px; }
-  .contact-links{ display:flex; gap: 16px; justify-content:center; flex-wrap:wrap; }
-
-  footer{ padding: 36px 0 50px; text-align:center; }
-  footer p{ font-size: 11.5px; color: var(--muted); margin:0; }
-
-  @media (max-width: 760px){
-    .hero-grid{ grid-template-columns: 1fr; }
-    .hero .photo-frame{ max-width: 240px; margin: 0 auto; }
-    .proj-grid, .work-grid{ grid-template-columns: 1fr; }
-    nav.pill{ gap: 20px; padding: 14px 20px; }
-  }
-  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ishan Golatkar — Portfolio</title>
+  <meta name="description" content="Portfolio of Ishan Golatkar, an aspiring engineer with a lifelong interest in programming and building.">
+  <meta name="theme-color" content="#FBE3B0">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-<div class="nav-outer">
-  <nav class="pill">
-    <a href="#top">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#adventures">Adventures</a>
-    <a href="#work">Recent work</a>
-    <a href="#contact">Get In Touch</a>
-  </nav>
-</div>
+<a class="skip" href="#main">Skip to content</a>
 
-<main id="top">
-
-  <!-- HERO -->
-  <section class="hero" style="border-top:none;">
-    <div class="wrap hero-grid">
-      <div>
-        <h1 class="display">ISHAN GOLATKAR</h1>
-        <p>I'm Ishan, an aspiring engineer with a lifelong interest in programming and building. Alongside my academic pursuits, I've competed at the district level in badminton and taken part in dramatics and performing arts experiences that have shaped my discipline and adaptability. I'm currently working toward a career in engineering, with a focus on Computer Science and related fields.</p>
-        <a class="btn" href="#projects">Let's get started &gt;</a>
-      </div>
-      <div class="photo-frame">
-        <img src="proish.jpg" alt="Ishan Golatkar" style="width:100%; height:100%; object-fit:cover;">
-          <circle cx="50" cy="38" r="18" fill="#4a4a4a"/>
-          <path d="M14,96 C14,68 30,56 50,56 C70,56 86,68 86,96 Z" fill="#4a4a4a"/>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="wrap">
-      <div class="eyebrow">Build Log</div>
-      <h2 class="section-title heading">Projects</h2>
-      <div class="proj-grid">
-        <a class="proj-link" href="drone.html" aria-label="View my Drone project">
-        <div class="proj-card">
-         <span class="num">01</span>
-        <h3>Drone</h3>
-        <p>
-         Developed alongside my brother, this project served as my first hands-on application of flight mechanics, electronics, and control systems.
-        </p>
-        <div class="tag-row">
-      <span class="tag">Electronics</span>
-      <span class="tag">Flight</span>
-        </div>
-     <span class="project-arrow">View project →</span>
- </div>
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#home" aria-label="Ishan Golatkar, back to the top">
+      <span class="brand-mark" aria-hidden="true">IG</span>
+      <span class="brand-name">Ishan Golatkar</span>
     </a>
-        <div class="proj-card">
-          <span class="num">02</span>
-          <h3>Waste-Segregating Dustbin</h3>
-          <p>A model built for a school competition, designed to automatically sort waste at the point of disposal.</p>
-          <div class="tag-row"><span class="tag">Automation</span><span class="tag">Sustainability</span></div>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+      <span class="sr-only">Menu</span>
+      <span class="bars" aria-hidden="true"></span>
+    </button>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#adventures">Adventures</a></li>
+        <li><a href="#work">Creative</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home" aria-labelledby="hero-title">
+    <div class="hero-band" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="sticker reveal">Hello, world</p>
+        <h1 id="hero-title" class="reveal" style="--d:.05s">
+          <span class="first">Ishan</span>
+          <span class="last">Golatkar</span>
+        </h1>
+        <p class="hero-tagline reveal" style="--d:.12s">I build things that work, and sometimes <em>fly</em>.</p>
+        <p class="hero-intro reveal" style="--d:.18s">I'm Ishan, an aspiring engineer with a lifelong interest in programming and building. I'm working toward a career in engineering, with a focus on Computer Science and related fields.</p>
+        <div class="hero-actions reveal" style="--d:.24s">
+          <a class="btn" href="#projects">See my projects <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn--ghost" href="#contact">Get in touch</a>
         </div>
-        <div class="proj-card">
-          <span class="num">03</span>
-          <h3>Oil-Water Separator Boat</h3>
-          <p>A model boat that separates oil from water surfaces, built for a model-making competition.</p>
-          <div class="tag-row"><span class="tag">Fluid Mechanics</span><span class="tag">Environment</span></div>
-        </div>
-        <div class="proj-card">
-          <span class="num">04</span>
-          <h3>Hydraulic Crane</h3>
-          <p>The build that deepened my interest in physics — working through force, pressure, and leverage by hand.</p>
-          <div class="tag-row"><span class="tag">Mechanics</span><span class="tag">Physics</span></div>
+        <a class="scroll-hint reveal" style="--d:.3s" href="#about" aria-label="Scroll to the About section">
+          <span class="track" aria-hidden="true"></span>
+          <span>Scroll</span>
+        </a>
+      </div>
+
+      <div class="hero-art reveal" style="--d:.15s">
+        <span class="art-shape art-circle" aria-hidden="true"></span>
+        <span class="art-shape art-half" aria-hidden="true"></span>
+        <span class="float float--plus" aria-hidden="true"></span>
+        <span class="float float--ring" aria-hidden="true"></span>
+        <span class="float float--dot" aria-hidden="true"></span>
+        <figure class="portrait">
+          <img src="proish.jpg" width="740" height="1200" fetchpriority="high"
+               alt="Portrait of Ishan Golatkar smiling with his arms crossed, wearing a yellow, blue and white striped T-shirt">
+        </figure>
+        <p class="note-hand" aria-hidden="true">that's me!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="wrap about-grid">
+      <div class="about-intro">
+        <div class="eyebrow reveal">About</div>
+        <h2 class="section-title reveal" id="about-title">A bit <span class="squiggle">about me</span></h2>
+        <p class="pull reveal"><mark>A lifelong interest in programming and building.</mark></p>
+      </div>
+
+      <div class="about-copy">
+        <p class="reveal">I'm Ishan, an aspiring engineer who learns best with his hands on something real: a drone, a model boat, a hydraulic crane.</p>
+        <p class="reveal">Alongside my academic pursuits, I've competed at the district level in badminton and taken part in dramatics and performing arts. Those experiences have shaped my discipline and adaptability.</p>
+        <p class="reveal">I'm currently working toward a career in engineering, with a focus on Computer Science and related fields.</p>
+
+        <ul class="traits">
+          <li class="trait reveal">
+            <h3>Builder</h3>
+            <p>A drone, a dustbin, a boat and a crane, all put together by hand.</p>
+          </li>
+          <li class="trait reveal" style="--d:.06s">
+            <h3>Performer</h3>
+            <p>Dramatics, performing arts and school skit wins.</p>
+          </li>
+          <li class="trait reveal" style="--d:.12s">
+            <h3>Athlete</h3>
+            <p>District-level badminton, all the way to the semi-finals.</p>
+          </li>
+          <li class="trait reveal" style="--d:.18s">
+            <h3>Trekker</h3>
+            <p>Kalsubai, Harishchandragad, Harihar and Kokankada.</p>
+          </li>
+        </ul>
+
+        <div class="curious reveal">
+          <p class="curious-label">Currently curious about</p>
+          <ul class="tags">
+            <li class="tag">Programming</li>
+            <li class="tag">Robotics</li>
+            <li class="tag">Quant development</li>
+            <li class="tag">Physics</li>
+            <li class="tag">Storytelling</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ADVENTURES (achievements) -->
-  <section id="adventures">
+  <!-- ============ SKILLS ============ -->
+  <section class="section section--alt" id="skills" aria-labelledby="skills-title">
     <div class="wrap">
-      <div class="eyebrow">Track Record</div>
-      <h2 class="section-title heading">Adventures</h2>
-      <div class="ach-row"><h4>District-Level Badminton Championship</h4><span>Semi-Finals</span></div>
-      <div class="ach-row"><h4>School Skit Competitions</h4><span>Winner</span></div>
-      <div class="ach-row"><h4>Model-Making Competitions</h4><span>Multiple entries</span></div>
-      <div class="ach-row"><h4>Kalsubai</h4><span>Trek</span></div>
-      <div class="ach-row"><h4>Harishchandragad</h4><span>Trek</span></div>
-      <div class="ach-row"><h4>Harihar</h4><span>Trek</span></div>
-      <div class="ach-row"><h4>Kokankada</h4><span>Trek</span></div>
-    </div>
-  </section>
+      <div class="eyebrow reveal">Toolbox</div>
+      <h2 class="section-title reveal" id="skills-title">Things I <span class="squiggle">work with</span></h2>
 
-  <!-- RECENT WORK (creative) -->
-  <section id="work">
-    <div class="wrap">
-      <div class="eyebrow">Creative</div>
-      <h2 class="section-title heading">Recent work</h2>
-      <div class="work-grid">
-        <div class="work-card">
-          <h4>Video Editing</h4>
-          <p>Cinematic edits built around mood and pacing, drawing on visual storytelling techniques from Game of Thrones.</p>
+      <div class="skill-list">
+        <div class="skill-row reveal">
+          <h3><b>01</b> Programming</h3>
+          <ul class="skill-tags"><li class="skill">C</li></ul>
         </div>
-        <div class="work-card">
-          <h4>Music Curation</h4>
-          <p>Scoring scenes with reference to composers like Ramin Djawadi, Hans Zimmer, and Two Steps From Hell and generating original epic-fantasy tracks with Suno AI.</p>
+        <div class="skill-row reveal">
+          <h3><b>02</b> Web</h3>
+          <ul class="skill-tags"><li class="skill">HTML5</li><li class="skill">CSS</li></ul>
         </div>
-        <div class="work-card">
-          <h4>Drama &amp; Skits</h4>
-          <p>Competed in and won school-level skit competitions,a different stage for the same storytelling instinct.</p>
+        <div class="skill-row reveal">
+          <h3><b>03</b> Systems</h3>
+          <ul class="skill-tags"><li class="skill">Ubuntu</li></ul>
+        </div>
+        <div class="skill-row reveal">
+          <h3><b>04</b> Hardware &amp; electronics</h3>
+          <ul class="skill-tags">
+            <li class="skill">Drone assembly</li>
+            <li class="skill">Brushless motors &amp; ESCs</li>
+            <li class="skill">Hardware troubleshooting</li>
+          </ul>
+        </div>
+        <div class="skill-row reveal">
+          <h3><b>05</b> Making &amp; mechanics</h3>
+          <ul class="skill-tags">
+            <li class="skill">Model making</li>
+            <li class="skill">Hydraulics</li>
+            <li class="skill">Flight mechanics</li>
+          </ul>
+        </div>
+        <div class="skill-row reveal">
+          <h3><b>06</b> Creative</h3>
+          <ul class="skill-tags">
+            <li class="skill">Video editing</li>
+            <li class="skill">Music curation</li>
+            <li class="skill">Drama &amp; skits</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
+  <!-- ============ PROJECTS ============ -->
+  <section class="section" id="projects" aria-labelledby="projects-title">
     <div class="wrap">
-      <div class="contact-panel">
-        <div class="eyebrow" style="justify-content:center;">Get in touch</div>
-        <h2 class="section-title heading" style="margin-bottom:10px;">Let's talk.</h2>
-        <p>Open to conversations about engineering, projects, or creative collaborations.</p>
-        <p>--> +91 9075671448  <br> --> ishangolatkar007@gmail.com</p>
-        <div class="contact-links">
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/ishan-golatkar-059251267/">LinkedIn</a>
+      <div class="eyebrow reveal">Build log</div>
+      <h2 class="section-title reveal" id="projects-title">Projects</h2>
+
+      <!-- Invisible 2x2 Matrix -->
+      <div class="projects-grid">
+        
+        <!-- 01 Drone -->
+        <article class="proj-card reveal">
+          <div class="proj-media">
+            <span class="badge">Full build log</span>
+            <img src="DronePic1.jpeg" width="1204" height="1600" loading="lazy"
+                 alt="The assembled drone: a red and white quadcopter frame with the flight controller mounted in the centre, photographed in low light">
+          </div>
+          <div class="proj-body">
+            <span class="proj-no">01</span>
+            <h3>Drone</h3>
+            <p>Built with help from my brother, my first real hands-on dive into flight mechanics, electronics, and control.</p>
+            <ul class="tags">
+              <li class="tag">Electronics</li>
+              <li class="tag">Flight</li>
+            </ul>
+            <div class="proj-action">
+              <a class="btn" href="Drone.html" aria-label="View my Drone project">View project <span class="arrow" aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02 Waste-Segregating Dustbin -->
+        <article class="proj-card reveal" style="--d:.06s">
+          <div class="proj-media proj-media--sage">
+            <svg viewBox="0 0 300 170" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" aria-hidden="true">
+              <g class="bob-item"><rect x="124" y="22" width="30" height="22" rx="3" fill="#FFF1D0" transform="rotate(-12 139 33)"/></g>
+              <path d="M139 56v14" stroke-dasharray="4 5" stroke-linecap="round"/>
+              <rect x="46" y="84" width="62" height="64" rx="5" fill="#208F9A"/><rect x="41" y="73" width="72" height="12" rx="4" fill="#FFF1D0"/>
+              <rect x="118" y="84" width="62" height="64" rx="5" fill="#FF7012"/><rect x="113" y="73" width="72" height="12" rx="4" fill="#FFF1D0"/>
+              <rect x="190" y="84" width="62" height="64" rx="5" fill="#FF3514"/><rect x="185" y="73" width="72" height="12" rx="4" fill="#FFF1D0"/>
+              <circle cx="77" cy="116" r="9" fill="#FFF1D0"/>
+              <path d="M149 108l11 18h-22z" fill="#FFF1D0"/>
+              <rect x="212" y="107" width="18" height="18" fill="#FFF1D0"/>
+              <path d="M0 148h300" stroke-width="4"/>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-no">02</span>
+            <h3>Waste-Segregating Dustbin</h3>
+            <p>A model built for a school competition, designed to automatically sort waste at the point of disposal.</p>
+            <ul class="tags"><li class="tag">Automation</li><li class="tag">Sustainability</li></ul>
+          </div>
+        </article>
+
+        <!-- 03 Oil-Water Separator Boat -->
+        <article class="proj-card reveal" style="--d:.12s">
+          <div class="proj-media proj-media--teal">
+            <svg viewBox="0 0 300 170" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+              <path d="M0 118q15-12 30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0V170H0Z" fill="#14606A"/>
+              <ellipse cx="78" cy="123" rx="40" ry="6" fill="#FF3514"/>
+              <g class="boat">
+                <path d="M150 92h96l-16 26h-64z" fill="#FF7012"/>
+                <rect x="190" y="68" width="30" height="24" fill="#FFF1D0"/>
+                <path d="M205 68V50M205 50l14 6-14 6" />
+                <path d="M152 104l-34 16" stroke-width="5"/>
+              </g>
+              <path d="M0 140q15-12 30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0" stroke="#FBE3B0" stroke-width="3" opacity=".7"/>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-no">03</span>
+            <h3>Oil-Water Separator Boat</h3>
+            <p>A model boat that separates oil from water surfaces, built for a model-making competition.</p>
+            <ul class="tags"><li class="tag">Fluid Mechanics</li><li class="tag">Environment</li></ul>
+          </div>
+        </article>
+
+        <!-- 04 Hydraulic Crane -->
+        <article class="proj-card reveal" style="--d:.18s">
+          <div class="proj-media proj-media--orange">
+            <svg viewBox="0 0 300 170" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+              <rect x="40" y="138" width="130" height="16" rx="3" fill="#2B1A10"/>
+              <rect x="70" y="118" width="38" height="20" fill="#FFF1D0"/>
+              <g class="boom">
+                <path d="M85 126L222 52" stroke-width="12"/>
+                <path d="M85 126L222 52" stroke="#FFF1D0" stroke-width="5"/>
+              </g>
+              <path d="M100 138l50-44" stroke-width="12"/><path d="M100 138l50-44" stroke="#14606A" stroke-width="5"/>
+              <path d="M222 52v58"/>
+              <rect x="204" y="110" width="36" height="26" fill="#FFF1D0"/>
+              <circle cx="222" cy="52" r="7" fill="#FF3514"/>
+              <circle cx="85" cy="126" r="8" fill="#FFF1D0"/>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-no">04</span>
+            <h3>Hydraulic Crane</h3>
+            <p>The build that deepened my interest in physics — working through force, pressure, and leverage by hand.</p>
+            <ul class="tags"><li class="tag">Mechanics</li><li class="tag">Physics</li></ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ADVENTURES ============ -->
+  <section class="section section--alt" id="adventures" aria-labelledby="adv-title">
+    <div class="wrap">
+      <div class="eyebrow reveal">Track record</div>
+      <h2 class="section-title reveal" id="adv-title"><span class="squiggle">Adventures</span></h2>
+
+      <div class="adv-grid">
+        <div>
+          <p class="adv-label reveal">On the field &amp; stage</p>
+          <ul class="tickets">
+            <li class="ticket reveal"><h3>District-Level Badminton Championship</h3><span class="stub">Semi-Finals</span></li>
+            <li class="ticket reveal" style="--d:.06s"><h3>School Skit Competitions</h3><span class="stub">Winner</span></li>
+            <li class="ticket reveal" style="--d:.12s"><h3>Model-Making Competitions</h3><span class="stub">Multiple entries</span></li>
+          </ul>
         </div>
+
+        <div>
+          <p class="adv-label reveal">On the trail</p>
+          <ul class="peaks">
+            <li class="peak reveal">
+              <svg viewBox="0 0 56 40" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M2 38L20 8l10 16 8-10 16 24z" fill="#FFF1D0"/></svg>
+              <h3>Kalsubai</h3><span>Trek</span>
+            </li>
+            <li class="peak reveal" style="--d:.06s">
+              <svg viewBox="0 0 56 40" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M2 38L20 8l10 16 8-10 16 24z" fill="#FF7012"/></svg>
+              <h3>Harishchandragad</h3><span>Trek</span>
+            </li>
+            <li class="peak reveal" style="--d:.12s">
+              <svg viewBox="0 0 56 40" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M2 38L20 8l10 16 8-10 16 24z" fill="#208F9A"/></svg>
+              <h3>Harihar</h3><span>Trek</span>
+            </li>
+            <li class="peak reveal" style="--d:.18s">
+              <svg viewBox="0 0 56 40" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M2 38L20 8l10 16 8-10 16 24z" fill="#FFF1D0"/></svg>
+              <h3>Kokankada</h3><span>Trek</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CREATIVE WORK ============ -->
+  <section class="section" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="eyebrow reveal">Creative</div>
+      <h2 class="section-title reveal" id="work-title">Recent <span class="squiggle">work</span></h2>
+
+      <div class="work-list">
+        <article class="work-row reveal">
+          <span class="work-num" aria-hidden="true">01</span>
+          <div>
+            <h3>Video Editing</h3>
+            <p>Cinematic edits built around mood and pacing, drawing on visual storytelling techniques from Game of Thrones.</p>
+          </div>
+          <div class="work-art" aria-hidden="true">
+            <svg class="film" viewBox="0 0 170 110" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round">
+              <rect x="6" y="14" width="158" height="82" rx="8" fill="#7CB2A0"/>
+              <rect x="30" y="30" width="110" height="50" rx="4" fill="#FFF1D0"/>
+              <g fill="#2B1A10" stroke="none">
+                <rect x="12" y="22" width="9" height="9" rx="2"/><rect x="12" y="50" width="9" height="9" rx="2"/><rect x="12" y="78" width="9" height="9" rx="2"/>
+                <rect x="149" y="22" width="9" height="9" rx="2"/><rect x="149" y="50" width="9" height="9" rx="2"/><rect x="149" y="78" width="9" height="9" rx="2"/>
+              </g>
+              <path d="M76 42l30 13-30 13z" fill="#FF7012"/>
+            </svg>
+          </div>
+        </article>
+
+        <article class="work-row reveal">
+          <span class="work-num" aria-hidden="true">02</span>
+          <div>
+            <h3>Music Curation</h3>
+            <p>Scoring scenes with reference to composers like Ramin Djawadi, Hans Zimmer, and Two Steps From Hell.</p>
+          </div>
+          <div class="work-art" aria-hidden="true">
+            <svg class="wave" viewBox="0 0 170 110" fill="#208F9A" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round">
+              <rect x="8" y="42" width="14" height="50" rx="3" fill="#7CB2A0"/>
+              <rect x="30" y="20" width="14" height="72" rx="3"/>
+              <rect x="52" y="50" width="14" height="42" rx="3" fill="#FF7012"/>
+              <rect x="74" y="8" width="14" height="84" rx="3" fill="#FF3514"/>
+              <rect x="96" y="32" width="14" height="60" rx="3"/>
+              <rect x="118" y="46" width="14" height="46" rx="3" fill="#FF7012"/>
+              <rect x="140" y="26" width="14" height="66" rx="3" fill="#7CB2A0"/>
+            </svg>
+          </div>
+        </article>
+
+        <article class="work-row reveal">
+          <span class="work-num" aria-hidden="true">03</span>
+          <div>
+            <h3>Drama &amp; Skits</h3>
+            <p>Competed in and won school-level skit competitions, a different stage for the same storytelling instinct.</p>
+          </div>
+          <div class="work-art" aria-hidden="true">
+            <svg class="masks" viewBox="0 0 170 110" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+              <g class="m1"><path d="M22 20h60v34c0 20-13 34-30 34S22 74 22 54z" fill="#FF7012"/><path d="M38 44h8M58 44h8"/><path d="M38 62q14 12 28 0"/></g>
+              <g class="m2"><path d="M88 34h60v34c0 20-13 34-30 34S88 88 88 68z" fill="#7CB2A0"/><path d="M104 58h8M124 58h8"/><path d="M104 84q14-12 28 0"/></g>
+            </svg>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title" data-cursor-theme="orange">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <div class="stripes contact-deco" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="eyebrow">Get in touch</div>
+        <h2 id="contact-title">Let's talk.</h2>
+        <p class="lead">Open to conversations about engineering, projects, or creative collaborations.</p>
+
+        <ul class="contact-links">
+          <li><a class="contact-link" href="tel:+919075671448"><small>Phone</small> +91 9075671448</a></li>
+          <li><a class="contact-link" href="mailto:ishangolatkar007@gmail.com"><small>Email</small> ishangolatkar007@gmail.com</a></li>
+          <li><a class="contact-link" href="https://www.linkedin.com/in/ishan-golatkar-059251267/" target="_blank" rel="noopener noreferrer"><small>LinkedIn</small> Ishan Golatkar<span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+
+        <a class="btn btn--dark" href="mailto:ishangolatkar007@gmail.com">Say hello <span class="arrow" aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer>
-  <p class="wrap">Built by Ishan Golatkar — updated july/2026</p>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-stripes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="footer-inner">
+      <p>Built by Ishan Golatkar — updated October 2026</p>
+      <p>Four stripes, zero templates.</p>
+    </div>
+  </div>
 </footer>
+
+<button class="to-top" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V5M5 11l7-7 7 7"/></svg>
+</button>
 
 </body>
 </html>
