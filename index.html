@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ishan Golatkar — Portfolio</title>
   <meta name="description" content="Portfolio of Ishan Golatkar, an aspiring engineer with a lifelong interest in programming and building.">
-  <meta name="theme-color" content="#FBE3B0">
+  <meta name="theme-color" content="#0A1330">
   <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -45,9 +45,7 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="home" aria-labelledby="hero-title">
-    <div class="hero-band" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-
-    <div class="wrap hero-grid">
+    <div class="wrap hero-grid grid">
       <div class="hero-copy">
         <p class="sticker reveal">Hello, world</p>
         <h1 id="hero-title" class="reveal" style="--d:.05s">
@@ -67,23 +65,18 @@
       </div>
 
       <div class="hero-art reveal" style="--d:.15s">
-        <span class="art-shape art-circle" aria-hidden="true"></span>
-        <span class="art-shape art-half" aria-hidden="true"></span>
-        <span class="float float--plus" aria-hidden="true"></span>
-        <span class="float float--ring" aria-hidden="true"></span>
-        <span class="float float--dot" aria-hidden="true"></span>
         <figure class="portrait">
           <img src="proish.jpg" width="740" height="1200" fetchpriority="high"
                alt="Portrait of Ishan Golatkar smiling with his arms crossed, wearing a yellow, blue and white striped T-shirt">
         </figure>
-        <p class="note-hand" aria-hidden="true">that's me!</p>
+        <p class="portrait-cap" aria-hidden="true">that's me!</p>
       </div>
     </div>
   </section>
 
   <!-- ============ ABOUT ============ -->
   <section class="section" id="about" aria-labelledby="about-title">
-    <div class="wrap about-grid">
+    <div class="wrap about-grid grid">
       <div class="about-intro">
         <div class="eyebrow reveal">About</div>
         <h2 class="section-title reveal" id="about-title">A bit <span class="squiggle">about me</span></h2>
@@ -131,8 +124,10 @@
   <!-- ============ SKILLS ============ -->
   <section class="section section--alt" id="skills" aria-labelledby="skills-title">
     <div class="wrap">
-      <div class="eyebrow reveal">Toolbox</div>
-      <h2 class="section-title reveal" id="skills-title">Things I <span class="squiggle">work with</span></h2>
+      <div class="skills-head">
+        <div class="eyebrow reveal">Toolbox</div>
+        <h2 class="section-title reveal" id="skills-title">Things I <span class="squiggle">work with</span></h2>
+      </div>
 
       <div class="skill-list">
         <div class="skill-row reveal">
@@ -178,11 +173,15 @@
   <!-- ============ PROJECTS ============ -->
   <section class="section" id="projects" aria-labelledby="projects-title">
     <div class="wrap">
-      <div class="eyebrow reveal">Build log</div>
-      <h2 class="section-title reveal" id="projects-title">Projects</h2>
+      <div class="projects-head">
+        <div>
+          <div class="eyebrow reveal">Build log</div>
+          <h2 class="section-title reveal" id="projects-title">Projects</h2>
+        </div>
+      </div>
 
       <div class="projects-grid">
-        
+
         <!-- 01 Drone -->
         <article class="proj-card reveal">
           <div class="proj-media">
@@ -199,7 +198,7 @@
               <li class="tag">Flight</li>
             </ul>
             <div class="proj-action">
-              <a class="btn" href="drone.html" aria-label="View my Drone project">View project <span class="arrow" aria-hidden="true">&rarr;</span></a>
+              <a class="btn" href="Drone.html" aria-label="View my Drone project">View project <span class="arrow" aria-hidden="true">&rarr;</span></a>
             </div>
           </div>
         </article>
@@ -282,11 +281,13 @@
   <!-- ============ ADVENTURES ============ -->
   <section class="section section--alt" id="adventures" aria-labelledby="adv-title">
     <div class="wrap">
-      <div class="eyebrow reveal">Track record</div>
-      <h2 class="section-title reveal" id="adv-title"><span class="squiggle">Adventures</span></h2>
+      <div class="adv-head">
+        <div class="eyebrow reveal">Track record</div>
+        <h2 class="section-title reveal" id="adv-title"><span class="squiggle">Adventures</span></h2>
+      </div>
 
-      <div class="adv-grid">
-        <div>
+      <div class="adv-grid grid">
+        <div class="adv-col--a">
           <p class="adv-label reveal">On the field &amp; stage</p>
           <ul class="tickets">
             <li class="ticket reveal"><h3>District-Level Badminton Championship</h3><span class="stub">Semi-Finals</span></li>
@@ -295,23 +296,23 @@
           </ul>
         </div>
 
-        <div>
+        <div class="adv-col--b">
           <p class="adv-label reveal">On the trail</p>
           <ul class="peaks">
             <li class="peak reveal">
-              <svg viewBox="0 0 56 40" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M2 38L20 8l10 16 8-10 16 24z" fill="#FFF1D0"/></svg>
+              <svg viewBox="0 0 56 40" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M2 38L20 8l10 16 8-10 16 24z"/></svg>
               <h3>Kalsubai</h3><span>Trek</span>
             </li>
             <li class="peak reveal" style="--d:.06s">
-              <svg viewBox="0 0 56 40" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M2 38L20 8l10 16 8-10 16 24z" fill="#FF7012"/></svg>
+              <svg viewBox="0 0 56 40" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M2 38L20 8l10 16 8-10 16 24z"/></svg>
               <h3>Harishchandragad</h3><span>Trek</span>
             </li>
             <li class="peak reveal" style="--d:.12s">
-              <svg viewBox="0 0 56 40" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M2 38L20 8l10 16 8-10 16 24z" fill="#208F9A"/></svg>
+              <svg viewBox="0 0 56 40" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M2 38L20 8l10 16 8-10 16 24z"/></svg>
               <h3>Harihar</h3><span>Trek</span>
             </li>
             <li class="peak reveal" style="--d:.18s">
-              <svg viewBox="0 0 56 40" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M2 38L20 8l10 16 8-10 16 24z" fill="#FFF1D0"/></svg>
+              <svg viewBox="0 0 56 40" fill="none" stroke="#2B1A10" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M2 38L20 8l10 16 8-10 16 24z"/></svg>
               <h3>Kokankada</h3><span>Trek</span>
             </li>
           </ul>
@@ -323,8 +324,10 @@
   <!-- ============ CREATIVE WORK ============ -->
   <section class="section" id="work" aria-labelledby="work-title">
     <div class="wrap">
-      <div class="eyebrow reveal">Creative</div>
-      <h2 class="section-title reveal" id="work-title">Recent <span class="squiggle">work</span></h2>
+      <div class="work-head">
+        <div class="eyebrow reveal">Creative</div>
+        <h2 class="section-title reveal" id="work-title">Recent <span class="squiggle">work</span></h2>
+      </div>
 
       <div class="work-list">
         <article class="work-row reveal">
@@ -383,21 +386,22 @@
   </section>
 
   <!-- ============ CONTACT ============ -->
-  <section class="section contact" id="contact" aria-labelledby="contact-title" data-cursor-theme="orange">
-    <div class="wrap">
-      <div class="contact-card reveal">
-        <div class="stripes contact-deco" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact-grid grid">
+      <div class="contact-main reveal">
         <div class="eyebrow">Get in touch</div>
         <h2 id="contact-title">Let's talk.</h2>
         <p class="lead">Open to conversations about engineering, projects, or creative collaborations.</p>
+      </div>
 
+      <div class="contact-side reveal" style="--d:.08s">
         <ul class="contact-links">
           <li><a class="contact-link" href="tel:+919075671448"><small>Phone</small> +91 9075671448</a></li>
           <li><a class="contact-link" href="mailto:ishangolatkar007@gmail.com"><small>Email</small> ishangolatkar007@gmail.com</a></li>
           <li><a class="contact-link" href="https://www.linkedin.com/in/ishan-golatkar-059251267/" target="_blank" rel="noopener noreferrer"><small>LinkedIn</small> Ishan Golatkar<span class="sr-only"> (opens in a new tab)</span></a></li>
         </ul>
 
-        <a class="btn btn--dark" href="mailto:ishangolatkar007@gmail.com">Say hello <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="btn" href="mailto:ishangolatkar007@gmail.com">Say hello <span class="arrow" aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>
@@ -406,16 +410,14 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <div class="footer-stripes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     <div class="footer-inner">
       <p>Built by Ishan Golatkar — updated October 2026</p>
-      <p></p>
     </div>
   </div>
 </footer>
 
 <button class="to-top" type="button" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V5M5 11l7-7 7 7"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M12 20V5M5 11l7-7 7 7"/></svg>
 </button>
 
 </body>
