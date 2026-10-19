@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Drone Project — Ishan Golatkar</title>
   <meta name="description" content="Ishan Golatkar's drone build: an F450 quadcopter with an ArduPilot APM 2.8 flight controller, with the full parts list and links.">
-  <meta name="theme-color" content="#FBE3B0">
+  <meta name="theme-color" content="#0A1330">
   <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -43,50 +43,60 @@
 
   <section class="proj-hero">
     <div class="wrap">
-      <a class="crumb reveal" href="index.html"><span aria-hidden="true">&larr;</span> Back to portfolio</a>
-      <div class="eyebrow reveal">Project 01 · Build Log</div>
-      <h1 class="reveal" style="--d:.05s">Drone</h1>
-      <p class="intro reveal" style="--d:.1s">This was my first major hands-on engineering project, built with my brother's help. It introduced me to the practical challenges of making something fly: electronics, balance, component integration, and flight control.</p>
+      <div class="proj-head grid">
+        <div class="proj-head-main">
+          <a class="crumb reveal" href="index.html"><span aria-hidden="true">&larr;</span> Back to portfolio</a>
+          <div class="eyebrow reveal">Project 01 · Build Log</div>
+          <h1 class="reveal" style="--d:.05s">Drone</h1>
+        </div>
+        <div class="proj-head-side">
+          <p class="intro reveal" style="--d:.1s">This was my first major hands-on engineering project, built with my brother's help. It introduced me to the practical challenges of making something fly: electronics, balance, component integration, and flight control.</p>
+        </div>
+      </div>
 
-      <figure class="proj-shot reveal" style="--d:.15s">
-        <img src="DronePic1.jpeg" width="1204" height="1600" fetchpriority="high"
-             alt="The assembled drone: a red and white quadcopter frame with the flight controller mounted in the centre, photographed in low light">
-        <figcaption>The finished build</figcaption>
-      </figure>
+      <div class="proj-layout grid">
+        <figure class="proj-shot reveal" style="--d:.15s">
+          <img src="DronePic1.jpeg" width="1204" height="1600" fetchpriority="high"
+               alt="The assembled drone: a red and white quadcopter frame with the flight controller mounted in the centre, photographed in low light">
+          <figcaption>The finished build</figcaption>
+        </figure>
 
-      <div class="details-grid">
-        <article class="detail reveal">
-          <h2>About the build</h2>
-          <p>My first major engineering endeavor, developed with my brother, provided deep hands-on experience navigating the real-world challenges of aerodynamics, electronics, component integration, and system control</p>
-        </article>
+        <div class="details-grid">
+          <article class="detail reveal">
+            <h2>About the build</h2>
+            <p>My first major engineering endeavor, developed with my brother, provided deep hands-on experience navigating the real-world challenges of aerodynamics, electronics, component integration, and system control</p>
+          </article>
 
-        <article class="detail reveal" style="--d:.07s">
-          <h2>What I learned</h2>
-          <ul>
-            <li>Basic flight mechanics and stability</li>
-            <li>How motors, propellers, and power systems work together</li>
-            <li>The importance of balance and weight distribution</li>
-            <li>Practical troubleshooting during hardware assembly</li>
-          </ul>
-        </article>
+          <article class="detail reveal" style="--d:.07s">
+            <h2>What I learned</h2>
+            <ul>
+              <li>Basic flight mechanics and stability</li>
+              <li>How motors, propellers, and power systems work together</li>
+              <li>The importance of balance and weight distribution</li>
+              <li>Practical troubleshooting during hardware assembly</li>
+            </ul>
+          </article>
 
-        <article class="detail reveal" style="--d:.14s">
-          <h2>Project areas</h2>
-          <ul class="tags">
-            <li class="tag">Electronics</li>
-            <li class="tag">Flight</li>
-            <li class="tag">Mechanics</li>
-            <li class="tag">Problem Solving</li>
-          </ul>
-        </article>
+          <article class="detail reveal" style="--d:.14s">
+            <h2>Project areas</h2>
+            <ul class="tags">
+              <li class="tag">Electronics</li>
+              <li class="tag">Flight</li>
+              <li class="tag">Mechanics</li>
+              <li class="tag">Problem Solving</li>
+            </ul>
+          </article>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section section--alt" id="parts" aria-labelledby="parts-title">
     <div class="wrap">
-      <div class="eyebrow reveal">Bill of Materials</div>
-      <h2 class="section-title reveal" id="parts-title">Parts <span class="squiggle">&amp; links</span></h2>
+      <div class="parts-head">
+        <div class="eyebrow reveal">Bill of Materials</div>
+        <h2 class="section-title reveal" id="parts-title">Parts <span class="squiggle">&amp; links</span></h2>
+      </div>
 
       <div class="parts-grid">
         <article class="part reveal">
@@ -161,28 +171,28 @@
         </article>
       </div>
 
-      <div class="back-panel reveal" data-cursor-theme="orange">
-        <h2>Back to the full portfolio</h2>
-        <p>Explore my other engineering models, creative work, achievements, and interests.</p>
-        <a class="btn btn--dark" href="index.html">Return to portfolio <span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <div class="back-panel reveal">
+        <div>
+          <h2>Back to the full portfolio</h2>
+          <p>Explore my other engineering models, creative work, achievements, and interests.</p>
+        </div>
+        <a class="btn" href="index.html">Return to portfolio <span class="arrow" aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="site-footer" style="padding-top:clamp(30px,4.5vw,54px)">
+<footer class="site-footer">
   <div class="wrap">
-    <div class="footer-stripes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     <div class="footer-inner">
       <p>Built by Ishan Golatkar — updated October 2026</p>
-      <p></p>
     </div>
   </div>
 </footer>
 
 <button class="to-top" type="button" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V5M5 11l7-7 7 7"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M12 20V5M5 11l7-7 7 7"/></svg>
 </button>
 
 </body>
