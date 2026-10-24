@@ -148,7 +148,7 @@
       if (home) {
         const hero = q('#home');
         const por = q('.portrait');
-        const ids = ['about', 'skills', 'projects', 'adventures', 'work', 'contact'];
+        const ids = ['about', 'skills', 'projects', 'adventures', 'work', 'social', 'contact'];
         const secs = ids.map((id) => q('#' + id));
         const pad = parseFloat(getComputedStyle(document.getElementById('about')).paddingTop) || 80;
 
@@ -190,20 +190,30 @@
         });
         segs.push(...intoFooter(cur, foot.t + 10, -1, W));
       } else {
-        // project page: right gutter, sweep to the left gutter, then out through the footer
+        // project page: right gutter past the hero, then alternate gutters through every
+        // section after it (left, right, left ...), then out through the footer
         const hero = q('.proj-hero');
-        const parts = q('#parts');
-        const pad = parseFloat(getComputedStyle(document.getElementById('parts')).paddingTop) || 80;
+        const secEls = [...document.querySelectorAll('.proj-hero ~ .section')];
+        const secs = secEls.map((el) => {
+          const r = el.getBoundingClientRect();
+          return { t: r.top + scrollY, b: r.bottom + scrollY };
+        });
+        const pad = parseFloat(getComputedStyle(secEls[0]).paddingTop) || 80;
         const a = [W + 40, hero.t + 30];
         const b = [R, hero.t + 150];
         segs.push([a, [a[0] - 120, a[1]], [b[0], b[1] - 60], b]);
         cur = [R, hero.b - pad * 0.5];
         segs.push(straight(b, cur));
-        const next = [L, parts.t + pad * 0.7];
-        segs.push(sweep(cur, next));
-        cur = [L, parts.b - pad * 0.5];
-        segs.push(straight(next, cur));
-        segs.push(...intoFooter(cur, foot.t + 10, 1, W));
+        let lastX = R;
+        secs.forEach((s, i) => {
+          const x = i % 2 === 0 ? L : R;
+          const next = [x, s.t + pad * 0.7];
+          segs.push(sweep(cur, next));
+          cur = [x, s.b - pad * 0.5];
+          segs.push(straight(next, cur));
+          lastX = x;
+        });
+        segs.push(...intoFooter(cur, foot.t + 10, lastX === L ? 1 : -1, W));
       }
       return segs;
     };
